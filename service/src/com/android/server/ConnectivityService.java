@@ -105,6 +105,7 @@ import android.Manifest;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.TargetApi;
+import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
 import android.app.BroadcastOptions;
 import android.app.PendingIntent;
@@ -11431,5 +11432,10 @@ public class ConnectivityService extends IConnectivityManager.Stub
         } catch (ServiceSpecificException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    @Override
+    public void onPackagePermissionChanged(int uid) {
+        mPermissionMonitor.onInternetPermissionChanged(uid);
     }
 }
